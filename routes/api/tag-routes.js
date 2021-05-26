@@ -5,7 +5,7 @@ const { Tag, Product, ProductTag } = require('../../models');
 
 router.get('/', (req, res) => {
   Tag.findAll().then((findalltags, err) => {
-    // if (err) throw err
+    if (err) throw err
     res.json(findalltags);
   })
   // find all tags
