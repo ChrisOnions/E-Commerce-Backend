@@ -3,13 +3,12 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// get all products
 router.get('/', async (req, res) => {
   try {
-    const readData = await Reader.findAll({
+    const readData = await Product.findAll({
       includes: [{ model: Product }, { model: Category }, { model: Tag }]
-    });
-    res.status(200).json(readData)
+    })
+    return res.status(200).json(readData)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -20,27 +19,20 @@ router.get('/', async (req, res) => {
 // get one product
 router.get('/:id', async (req, res) => {
   try {
-    const readId = await Reader.findByPk(req.params.id, {
-      include: [{ model: Product }, { modle: Category }, { modle: Tag }]
-    })
-    if (readId) {
-      res.status(200).json(readId)
-    }
-  } catch (err) { res.status(500).json(err) }
+    const readId = await Product.findByPk(req.params.id, {
+      // include: [{ model: Product }, { model: Category }, { model: Tag }],
+    });
+    res.status(200).json(readId)
+  } catch (err) {
+    res.json(err)
+    console.log(err);
+  }
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
 });
 
 // create new product
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -105,8 +97,17 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+router.delete('/:id', async (req, res) => {
+  try {
+    const delCategory = await Category.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    return res.json(delCategory)
+  } catch (err) {
+    res.status(500).json(err)
+  }
 });
 
 module.exports = router;
