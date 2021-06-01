@@ -15,7 +15,7 @@
 
 ## Links
 
-- [GitHub Repository](https://github.com/jpd61/e-commerce-backend)
+- [GitHub Repository](https://github.com/ChrisOnions/E-Commerce-Backend)
 
 <!-- - [Deployed on heroku](https://shielded-escarpment-72538.herokuapp.com/) -->
 
