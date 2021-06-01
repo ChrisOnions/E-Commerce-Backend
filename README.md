@@ -71,5 +71,5 @@ CREATE DATABASE ecommerce_db;
 
 ## Pictures
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets\express-note-taker.gif)
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/express-demo-02.gif)
+![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/13-orm-homework-demo-01.gif)
+![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/13-orm-homework-demo-02.gif)
